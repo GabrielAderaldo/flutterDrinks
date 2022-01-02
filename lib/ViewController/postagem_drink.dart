@@ -20,14 +20,6 @@ class _Postagem_drinkState extends State<Postagem_drink> {
   late TextEditingController _controllerInpultName;
   Repository repository = Repository(Local(), Remote());
 
-  Widget inpult(String titulo, TextEditingController _controller) {
-    return TextFormField(
-      controller: _controller,
-      decoration:
-          InputDecoration(border: OutlineInputBorder(), hintText: titulo),
-    );
-  }
-
   @override
   void initState() {
     super.initState();
@@ -43,7 +35,7 @@ class _Postagem_drinkState extends State<Postagem_drink> {
         showDialog(
             context: context,
             builder: (context) =>
-                alertas.erroSimples("Erro", resposta, "Fechar", context));
+                alertas.erroSimples("Atenção", resposta, "Fechar", context));
       } else {
         Navigator.pop(context);
       }

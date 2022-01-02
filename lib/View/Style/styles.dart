@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-class BordersStyle {
+class Styles {
+  static Widget Paddings(double nPadding, Widget child) {
+    return Padding(padding: EdgeInsets.all(nPadding), child: child);
+  }
+
   static BoxDecoration borderRadius(double numeroRaius) {
     return BoxDecoration(
         shape: BoxShape.rectangle,
