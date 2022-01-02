@@ -1,8 +1,10 @@
 import 'dart:io';
 
-import 'package:apk_bebidas/View/home_Page.dart';
+import 'package:apk_bebidas/ViewController/home_view_controller.dart';
 import 'package:apk_bebidas/utils/problems.dart';
 import 'package:flutter/material.dart';
+
+import 'ViewController/menu_view_controller.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home_page("teste"),
+      home: MyStatefulWidget(),
     );
   }
 }

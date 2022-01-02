@@ -1,16 +1,11 @@
-import 'dart:ui';
-
 import 'package:apk_bebidas/Model/Pessoa.dart';
+import 'package:apk_bebidas/ViewController/listagem_bebida.dart';
 import 'package:apk_bebidas/datasource/local_datasorce.dart';
 import 'package:apk_bebidas/datasource/remote_datasource.dart';
 import 'package:apk_bebidas/repository/repository.dart';
 import 'package:flutter/material.dart';
 
 class Home_page extends StatefulWidget {
-  String title;
-
-  Home_page(this.title);
-
   @override
   _Home_pageState createState() => _Home_pageState();
 }
@@ -55,7 +50,7 @@ class _Home_pageState extends State<Home_page> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: widget.title,
+      title: "Apk bebidas",
       home: Scaffold(
           appBar: AppBar(
             centerTitle: true,
@@ -68,16 +63,27 @@ class _Home_pageState extends State<Home_page> {
                 itemCount: pessoas.length,
                 itemBuilder: (context, i) {
                   var indexPessoa = pessoas[i];
-                  return Card(
-                    margin: EdgeInsets.all(8),
-                    child: Column(
-                      children: [
-                        upCard(
-                          indexPessoa.path ?? "",
-                          indexPessoa.drinks!.length.toString(),
-                          indexPessoa.name ?? "",
-                        ),
-                      ],
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Listagem_drink(
+                                  indexPessoa.id ?? "",
+                                  indexPessoa.name ?? "",
+                                  indexPessoa.path ?? "")));
+                    },
+                    child: Card(
+                      margin: EdgeInsets.all(8),
+                      child: Column(
+                        children: [
+                          upCard(
+                            indexPessoa.path ?? "",
+                            indexPessoa.drinks!.length.toString(),
+                            indexPessoa.name ?? "",
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 }),
